@@ -1,0 +1,37 @@
+{
+  "name": "koa-demo",
+  "version": "1.0.0",
+  "description": "koa2 demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoungZhang08/koa-demo.git"
+  },
+  "keywords": [
+    "koa2"
+  ],
+  "author": "Youngzhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YoungZhang08/koa-demo/issues"
+  },
+  "homepage": "https://github.com/YoungZhang08/koa-demo#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "ejs": "^2.6.1",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-mysql-session": "^0.0.2",
+    "koa-router": "^7.4.0",
+    "koa-session-minimal": "^3.0.4",
+    "koa-static": "^5.0.0",
+    "koa-static-cache": "^5.1.2",
+    "koa-views": "^6.1.5",
+    "md5": "^2.2.1",
+    "mocha": "^5.2.0",
+    "mysql": "^2.16.0"
+  }
+}
