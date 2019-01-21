@@ -5,6 +5,6 @@ const signinController = require('../controller/con_signin.js');
 
 const routers = router
     .post('/signup', signupController.signUp)
-    // .post('/signin', signinController.signin);
+    .post('/signin', signinController.signIn);
 
 module.exports = routers;

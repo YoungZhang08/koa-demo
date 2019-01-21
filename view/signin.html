@@ -19,15 +19,14 @@
                 <label>密码：</label> 
                 <input placeholder="请输入密码" class="password" type="password" name="password">
             </div>
-            <div>
+            <!-- <div>
                 <label>重复密码：</label> 
                 <input placeholder="请确认密码" class="repeatpass" type="password" name="repeatpass">
-            </div>
-            <div class="submit">注册</div>
+            </div> -->
+            <div class="submit">登录</div>
         </form>
     </div>
 	<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
-	<script src="./Ajax.js"></script>
     <script>
         $(window).keyup(function (e) {
 			//console.log(e.keyCode)
@@ -41,25 +40,17 @@
 			}else if($('input[name=name]').val().match(/[<'">]/g)){
 				fade('请输入合法字符！')
 			}else{
-				Ajax({
-					url: "http://localhost:8000/signup",
+				$.ajax({
+					url: "http://localhost:8000/user/signin",
 					data: {
 						name: $('input[name=name]').val(),
 						password: $('input[name=password]').val(),
-						repeatpass: $('input[name=repeatpass]').val(),
+						// repeatpass: $('input[name=repeatpass]').val(),
 					},
 					type: "POST",
-					dataType: 'jsonp',
+					dataType: 'json',
 					success: function (data) {
 						console.log(data)
-					//    if(msg.code == 200){
-					// 	   fade('注册成功')
-					// 	   setTimeout(function(){
-					// 		   console.log('注册成功')	  
-					// 	   },1000)
-					//    }else{
- 					// 		fade(msg.message)
-					//    }
 					}
 				})			
 			}

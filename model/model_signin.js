@@ -1,9 +1,12 @@
-// const mysql = require('../config/mysql.js');
+const mysql = require('../config/mysql.js');
 
-// // 通过名字查找用户
-// let signinUser = (name) => {
-//     let _sql = `SELECT * FROM  user_info WHERE password="${cryptopPass}" AND email="${options.email}" limit 1`;
-//     return mysql.query(_sql);
-// };
+// 通过用户名查找用户
+let signinUser = async (name) => {
+    let _sql = `SELECT * FROM  users WHERE name="${name}"`;
+    let res = await mysql.query(_sql);
+    return res;
+};
 
-// module.exports = signinUser;
+module.exports = {
+    signinUser
+};

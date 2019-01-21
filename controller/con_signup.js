@@ -1,27 +1,31 @@
-const signup = require('../services/signup');
 const signupModel = require('../model/model_signup');
+const signinModel = require('../model/model_signin');
 
 module.exports = {
     async signUp(ctx) {
-        const formData = ctx.request.body;
-        console.log(formData);
-        await signupModel.signinUser(formData.name)
+        let userInfo = {
+            name: ctx.request.body.name,
+            pass: ctx.request.body.password
+        };
+        console.log(userInfo);
+        await signinModel.signinUser(userInfo.name)
             .then(async (res) => {
-                console.log(res);
-                // if(res[0].length >= 1) {
-                //     ctx.body = {
-                //         success: false,
-                //         msg: '用户已存在'
-                //     }
-                // } else if(formData.pass !== formData.repearpass || pass.trim() === '') {
-                //     ctx.body = {
-                //         success: false,
-                //         msg: '两次输入密码不一致'
-                //     }
-                // } else {
-                //     await signupModel.insertData([])
-                // }
+                if(res.length === 0) {
+                    let result = await signupModel.signupUser(userInfo);
+                    console.log(result);
+                    ctx.body = {
+                        success: true,
+                        status: 200,
+                        msg: '注册成功'
+                    }
+                } else {
+                    console.log("用户已存在!");
+                    ctx.body = {
+                        success: false,
+                        status: 500,
+                        msg: '用户已存在'
+                    }
+                }
             })
-
     }
 }
