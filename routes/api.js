@@ -4,7 +4,7 @@ const signupController = require('../controller/con_signup.js');
 const signinController = require('../controller/con_signin.js');
 
 const routers = router
-    .post('/signup', signupController.signUp);
+    .post('/signup', signupController.signUp)
     // .post('/signin', signinController.signin);
 
 module.exports = routers;

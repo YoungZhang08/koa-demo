@@ -4,10 +4,10 @@ module.exports = {
     async signup(formData){
         let resData = await signupModel.signup({
             name: formData.name,
-            pass: formData.pass,
+            pass: formData.password,
             repeatpass: formData.repeatpass
         });
-
+        console.timeLog(resData);
         return resData;
     }
 }

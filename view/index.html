@@ -26,7 +26,8 @@
             <div class="submit">注册</div>
         </form>
     </div>
-    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+	<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+	<script src="./Ajax.js"></script>
     <script>
         $(window).keyup(function (e) {
 			//console.log(e.keyCode)
@@ -35,35 +36,30 @@
 			}
         });
         $('.submit').click(function(){
-			// console.log($('.form').serialize())
 			if ($('input[name=name]').val().trim() == '') {
 				fade('请输入用户名！')
 			}else if($('input[name=name]').val().match(/[<'">]/g)){
 				fade('请输入合法字符！')
 			}else{
-				$.ajax({
-					url: "http://localhost:8000",
+				Ajax({
+					url: "http://localhost:8000/signup",
 					data: {
 						name: $('input[name=name]').val(),
 						password: $('input[name=password]').val(),
 						repeatpass: $('input[name=repeatpass]').val(),
 					},
 					type: "POST",
-					cache: false,
-					dataType: 'json',
-					success: function (msg) {
-					   if(msg.code == 200){
-						   fade('注册成功')
-						   setTimeout(function(){
-							   console.log('注册成功')	  
-						   },1000)
-					   }else{
- 							fade(msg.message)
-					   }
-					},
-					error: function (err) {
-						alert('err');
-						alert('异常');
+					dataType: 'jsonp',
+					success: function (data) {
+						console.log(data)
+					//    if(msg.code == 200){
+					// 	   fade('注册成功')
+					// 	   setTimeout(function(){
+					// 		   console.log('注册成功')	  
+					// 	   },1000)
+					//    }else{
+ 					// 		fade(msg.message)
+					//    }
 					}
 				})			
 			}
