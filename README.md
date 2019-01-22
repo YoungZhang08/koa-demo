@@ -1,5 +1,5 @@
 # koa-demo(基于koa2的简单注册登录)
-### Node+Koa2+Mysql8
+### Node+Koa2+Mysql2
 
 ## 数据库
 
